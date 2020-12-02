@@ -47,5 +47,5 @@ what would we do if we had more time:
 
 apply ML models:
 
-1. regularised regression (since we are interested in prediction model)
+1. regularised regression (since we are interested in prediction model) 	+ fold
 2. polynomial extension  +  CV (K-fold)
