@@ -24,7 +24,7 @@ stats.AIC=AIC
 stats.BIC=BIC
 stats.R2=R2
 stats.adj_R2=adj_R2
-
+stats.SE=std_error;
 
 
 end

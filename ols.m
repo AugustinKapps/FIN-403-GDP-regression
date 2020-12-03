@@ -1,4 +1,4 @@
-function [beta,stats] = ols_augustin(X,y)
+function [beta,stats] = ols(X,y)
 %Do a least squate regression on the given data (variable X and target y)
 %Outputs:
 %   beta : beta obtained from the regression
@@ -10,7 +10,7 @@ function [beta,stats] = ols_augustin(X,y)
 n=size(X,1);
 K=size(X,2);
 
-beta=X'*X\X'*y
+beta=X'*X\X'*y;
 y_hat=X*beta;
 
 res = y_hat - y;
@@ -45,7 +45,13 @@ P=NaN;
 if isreal(t_value)
     P=2*(1-tcdf(t_value,n-K));
 end
+[result] = t_test(X,y,beta);
+significant_test=result.significant_test(end);
+
 % Save all the computed results
+
+
+
 stats=struct();
 stats.sigma2=s2;
 stats.sample_var=var;
@@ -56,6 +62,7 @@ stats.R2=R2;
 stats.adj_R2=adj_R2;
 stats.CI=CI;
 stats.p_values=P;
+stats.significant_test=significant_test;
 
 end
 
