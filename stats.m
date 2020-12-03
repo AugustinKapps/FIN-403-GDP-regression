@@ -15,7 +15,6 @@ std_error  = sqrt(diag(sample_var));
 AIC = log(SSE / n) + 2 * k / n;
 BIC = log(SSE / n) + log(n) * k / n;
 
-
 stats=struct()
 stats.sigma2=sigma2
 stats.sample_var=sample_var
@@ -24,8 +23,11 @@ stats.AIC=AIC
 stats.BIC=BIC
 stats.R2=R2
 stats.adj_R2=adj_R2
+<<<<<<< HEAD
 stats.SE=std_error;
 
+=======
+>>>>>>> 65b8139776676aa8dfd6db2fe2676bfeca628b52
 
 end
 
