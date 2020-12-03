@@ -1,4 +1,4 @@
-function [R2,adj_R2,sigma2,sample_var,std_error,AIC,BIC] = stats(X,y,y_hat)
+function [stats] = stats(X,y,y_hat)
 %STATS Summary of this function goes here
 n = length(y);
 k = size(X,2);
@@ -14,5 +14,18 @@ sample_var = sigma2 * inv(X'*X);
 std_error  = sqrt(diag(sample_var));
 AIC = log(SSE / n) + 2 * k / n;
 BIC = log(SSE / n) + log(n) * k / n;
+
+
+stats=struct()
+stats.sigma2=sigma2
+stats.sample_var=sample_var
+stats.std_error=std_error
+stats.AIC=AIC
+stats.BIC=BIC
+stats.R2=R2
+stats.adj_R2=adj_R2
+
+
+
 end
 
