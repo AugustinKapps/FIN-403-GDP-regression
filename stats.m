@@ -23,11 +23,9 @@ stats.AIC=AIC
 stats.BIC=BIC
 stats.R2=R2
 stats.adj_R2=adj_R2
-<<<<<<< HEAD
 stats.SE=std_error;
 
-=======
->>>>>>> 65b8139776676aa8dfd6db2fe2676bfeca628b52
+
 
 end
 
