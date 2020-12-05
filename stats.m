@@ -3,7 +3,7 @@ function [stats] = stats(X,y,y_hat)
 n = length(y);
 k = size(X,2);
 % R2 and Adj R2
-res = y_hat - y;
+res = y-y_hat;
 SSE = res'*res;
 SST = sum((y-mean(y)).^2);
 R2  = 1 - SSE/SST;
@@ -24,7 +24,7 @@ stats.BIC=BIC
 stats.R2=R2
 stats.adj_R2=adj_R2
 stats.SE=std_error;
-
+stats.residuals=res
 
 
 end

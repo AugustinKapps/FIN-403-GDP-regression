@@ -13,7 +13,7 @@ K=size(X,2);
 beta=X'*X\X'*y;
 y_hat=X*beta;
 
-res = y_hat - y;
+res = y-y_hat ;
 SSE = res'*res;
 SST = sum((y-mean(y)).^2);
 R2  = 1 - SSE/SST;
@@ -63,6 +63,6 @@ stats.adj_R2=adj_R2;
 stats.CI=CI;
 stats.p_values=P;
 stats.significant_test=significant_test;
-
+stats.residuals=res;
 end
 

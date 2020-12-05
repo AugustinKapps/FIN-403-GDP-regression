@@ -6,7 +6,7 @@ K=size(X_test,2);
 
 y_hat=X_test*beta;
 
-residuals = y_hat - y_test;
+residuals = y_test-y_hat  ;
 SSE = residuals'*residuals;
 SST = sum((y_test-mean(y_test)).^2);
 R2  = 1 - SSE/SST;
@@ -18,5 +18,6 @@ result.SSE=SSE;
 result.SST=SST
 result.R2=R2
 result.adj_R2=adj_R2;
+result.y_hat=y_hat;
 end
 
