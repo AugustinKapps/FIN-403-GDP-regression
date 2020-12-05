@@ -6,7 +6,7 @@ tX = X'*X;
 [~,eig_val]  = eig(tX);
 % correlation (without intercept)
 corr = corrcoef(X(2:end,2:end));
-condition_nb = sqrt(max(diag(eig_val))/min(diag(eig_val)));
+condition_nb = abs(sqrt(max(diag(eig_val))/min(diag(eig_val))));
 % Variance inflation factor : VIF_i = (1-R2_i)^{-1}
 n   = size(X,1);
 k   = size(X,2);
