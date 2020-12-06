@@ -12,11 +12,11 @@ SST = sum((y_test-mean(y_test)).^2);
 R2  = 1 - SSE/SST;
 adj_R2 = 1 - (n-1)/(n-K) * (1-R2);
 
-result=struct()
+result=struct();
 result.residuals=residuals;
 result.SSE=SSE;
-result.SST=SST
-result.R2=R2
+result.SST=SST;
+result.R2=R2;
 result.adj_R2=adj_R2;
 result.y_hat=y_hat;
 end
