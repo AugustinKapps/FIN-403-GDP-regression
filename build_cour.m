@@ -1,4 +1,4 @@
-function [X_out X_index] = build_cour(method,X,y)
+function [X_out, X_index] = build_cour(method,X,y)
 
 % Define size parameters
 n = size(X,1);
@@ -29,7 +29,7 @@ while H == 1
 
     R = zeros(1,size(X_s2g_plus,2));
     R(1,end) = 1;
-    [F_stat, F_crit, H] = FTest(X_s2g_plus,y,R,0,alpha);
+    [~, ~, H] = FTest(X_s2g_plus,y,R,0,alpha);
     
     if H == 1
         X_s2g = X_s2g_plus;
@@ -58,7 +58,7 @@ while H == 0
         X_g2s_min(:,i) = [];
         R2_g2s(X_index_g2s(i)) = SelectionCriteria(X_g2s_min,y);
     end
-    [R2_g2s_max, X_delete_index] = max(R2_g2s);
+    [~, X_delete_index] = max(R2_g2s);
     
     X_index_min = X_index_g2s;
     X_index_min(X_index_min == X_delete_index) = [];
@@ -66,9 +66,9 @@ while H == 0
     R = zeros(1,K);
     R(1,X_delete_index) = 1;
     R(X_deleted) = [];
-    [F_stat, F_crit, H] = FTest(X_g2s,y,R,0,alpha);
+    [~, ~, H] = FTest(X_g2s,y,R,0,alpha);
 
-    if H == -1
+    if H == 0
         X_deleted = [X_deleted X_delete_index];
         X_g2s = X_g2s_min;
         X_index_g2s = X_index_min;
@@ -78,3 +78,9 @@ end
 X_index = sort(X_index_g2s);
 X_out=X_g2s;
 end
+end
+
+function [R2] = SelectionCriteria(X,y)
+    [~,stat] = ols(X,y);
+    R2 = stat.R2;
+end 

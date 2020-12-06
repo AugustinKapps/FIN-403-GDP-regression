@@ -4,8 +4,6 @@ function [X_select, idx_select] = model_selection(method,X,y)
 k = size(X,2);
 % Set significance level 
 alpha = 0.05;
-% Set selection criteria 
-criterion = @(st) st.R2;
 % array of indices
 indices  = 1:k;
 if method=="simple_to_general"
@@ -20,8 +18,7 @@ while H == 1
         % include i in included
         with_i = add_i(included,i);
         % fit model
-        [~,stat] = ols(X(:,with_i),y);
-        crit(i)  = criterion(stat);
+        crit(i)  = criterion(X(:,with_i));
     end
     [~, argmax] = max(crit); 
     % include argmax to model
@@ -48,8 +45,7 @@ while H == 0
          % remove i from remaining
          without_i = remove_i(remaining,i);
          % run model
-         [~,stat] = ols(X(:,without_i),y);
-         crit(i)  = criterion(stat);
+         crit(i)  = criterion(X(:,without_i));
     end
     [~, argmax] = max(crit); 
     % F test
@@ -61,19 +57,44 @@ while H == 0
 end
 X_select   = X(:,remaining);
 idx_select = indices(remaining);
+
+elseif method=="p_val"
+remaining = boolean(ones(k,1));
+p_val = inf;
+while p_val > alpha
+    [~,stat] = ols(X(:,remaining),y);
+    crit = stat.p_values; 
+    [p_val, argmax] = max(crit); 
+    if p_val > alpha % => H1 : param = 0 is not rejected => remove argmax from model
+        remaining = remove_i(remaining,argmax);
+    end
+end 
+X_select   = X(:,remaining);
+idx_select = indices(remaining);
 end
+% ====================================================
+%=====================================================
+%=====================================================
+
+
 %=====================================================
 %================ HELPER FUNCTIONS ===================
 %=====================================================
+% add ith 1 of logical array
 function [with_i] = add_i(included,i)
     with_i = included;
     remaining_indices = indices(~included);
     with_i(remaining_indices(i)) = 1;
 end
-
+% remove ith 1 of logical array
 function [without_i] = remove_i(remaining,i)
     without_i = remaining;
     remaining_indices = indices(remaining);
     without_i(remaining_indices(i)) = 0;
+end
+% selection criterion
+function [crit_val] = criterion(X)
+    [~,stat] = ols(X,y);
+    crit_val = stat.R2;
 end
 end
