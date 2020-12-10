@@ -15,10 +15,12 @@ e_sq_1 = e_1'*e_1;
 e_sq_2 = e_2'*e_2;
 
 log_diff = -0.5 * (log(e_sq_1/n) + e_1 .* e_1 /(e_sq_1/n)) + 0.5*(log(e_sq_2/n) + e_2 .* e_2 /(e_sq_2/n));
+if log_diff==0
+V=0;
+else 
 KLIC1_KLIC0 = mean(log_diff);
 var_log_diff = var(log_diff,1);
 V = sqrt(n) * KLIC1_KLIC0 / sqrt(var_log_diff);
-
-
+end
 
 end
