@@ -9,7 +9,7 @@ omega=diag(residuals.*residuals);
 for i = 1:n_iteration
     % fit model
     Q = X'* (omega\eye(size(X,1)));
-    beta=Q*X\Q*y;
+    beta=(Q*X)\(Q*y);
     %beta=X'*inv(omega)*X\X'*inv(omega)*y;
     y_hat=X*beta;
     % improve variance matrix estimator
