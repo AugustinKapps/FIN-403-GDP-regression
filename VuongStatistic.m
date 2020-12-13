@@ -1,4 +1,4 @@
-function V = VuongStatistic(X,y,regressors_model_1,regressors_model_2)
+function [V,H] = VuongStatistic(X,y,regressors_model_1,regressors_model_2)
 
 n = length(y);
 
@@ -22,5 +22,22 @@ KLIC1_KLIC0 = mean(log_diff);
 var_log_diff = var(log_diff,1);
 V = sqrt(n) * KLIC1_KLIC0 / sqrt(var_log_diff);
 end
+
+%%%%%%%%%%%%%%%%%%%%%%%% compute the hypothesis %%%%%%%%%%%%%%%%%%%%%%%%%
+% H=0 => models are equal
+% H=1 => regressors_model_1 is better
+% H=-1 => regressors_model_2 is better
+
+alpha=0.05; % confidence level
+l_q=norminv(alpha/2); % low normal quantile
+h_q=norminv(1-alpha/2); % high normal quantile
+H=0;
+if V > h_q
+   H=1;
+end 
+
+if V < l_q
+   H=-1;
+end 
 
 end

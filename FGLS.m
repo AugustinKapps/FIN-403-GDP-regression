@@ -1,10 +1,11 @@
-function [beta,statistics] = FGLS(X,y)
+function [statistics] = FGLS(X,y)
 %FGLS Summary of this function goes here
 %   Detailed explanation goes here
 n_iteration = 20;
-[~,stats_ols]=ols(X,y);
-residuals=stats_ols.residuals;
+stats_ols = ols(X,y);
+residuals = stats_ols.residuals;
 omega=diag(residuals.*residuals);
+
 for i = 1:n_iteration
     % fit model
     Q = X'* (omega\eye(size(X,1)));
@@ -19,7 +20,7 @@ for i = 1:n_iteration
     omega = diag(est_var);    
 end
 
-[statistics] = stats(X,y,y_hat);
+statistics = compute_statistics(X,y,beta);
 
 end
 

@@ -1,14 +1,19 @@
-function [res] = expand(X,degree,add_interractions,add_logs)
-%EXPAND Summary of this function goes here
-%   Detailed explanation goes here
-
+function [res,new_col_names] = expand(X,degree,add_interractions,add_logs,col_names)
+% We assume that the first columns is always the intercept
+new_col_names=col_names;
 res=X;
 % we don't want to expand the intercept
+col_names=col_names(:,2:size(X,2));
 X=X(:,2:size(X,2));
 tmp=X;
 for deg=1:degree-1
+    % compute the expansion
     tmp=tmp.*X;
+    % save the expansion
     res=[res,tmp];
+    % add degree expansion names, note that we do not consider the intercept
+    new_col_names=[new_col_names,strcat(col_names,'^',int2str(deg+1))];
+   
 end
 
 
@@ -19,16 +24,25 @@ if add_interractions
            % condition to avoid duplicate
            if c_1>c_2
                interaction=X(:,c_1).*X(:,c_2);
+               % add interaction
                interractions=[interractions,interaction];
+               % add interractions names
+               new_col_names=[new_col_names,strcat(col_names(c_1),'*',col_names(c_2))]; 
            end
        end 
    end
+   % save the interractions
    res=[res,interractions];
 end
 
 if add_logs
-    res=[res,log(X)];
+    % add log tranformations for positive columns
+    res=[res,log(X(:,all(X>0)))];
+    % add log transformation names
+    new_col_names=[new_col_names,strcat('LOG(',col_names(all(X>0)),')')]; 
 end
+
+
 
 
 end

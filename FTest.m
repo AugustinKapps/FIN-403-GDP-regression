@@ -2,7 +2,7 @@ function [F_stat, F_crit, H] = FTest(X,y,R,q,alpha)
 
 % To reject an hypothesis.
 
-param = X'*X\X'*y;
+param = (X'*X)\(X'*y);
 
 n = size(X,1);
 K = size(X,2);

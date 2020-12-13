@@ -62,7 +62,7 @@ elseif method=="p_val"
 remaining = boolean(ones(k,1));
 p_val = inf;
 while p_val > alpha
-    [~,stat] = ols(X(:,remaining),y);
+    stat = ols(X(:,remaining),y);
     crit = stat.p_values; 
     [p_val, argmax] = max(crit); 
     if p_val > alpha % => H1 : param = 0 is not rejected => remove argmax from model
@@ -94,7 +94,7 @@ function [without_i] = remove_i(remaining,i)
 end
 % selection criterion
 function [crit_val] = criterion(X)
-    [~,stat] = ols(X,y);
+    stat = ols(X,y);
     crit_val = stat.R2;
 end
 end
