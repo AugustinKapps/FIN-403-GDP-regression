@@ -1,5 +1,5 @@
 function [X_select, idx_select] = model_selection(method,X,y)
-
+lambda = 1000000;
 % Define size parameters
 k = size(X,2);
 % Set significance level 
@@ -94,7 +94,7 @@ function [without_i] = remove_i(remaining,i)
 end
 % selection criterion
 function [crit_val] = criterion(X)
-    stat = ols(X,y);
+    stat = ols_regularised(X,y,lambda);
     crit_val = stat.R2;
 end
 end
