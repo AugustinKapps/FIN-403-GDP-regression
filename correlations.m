@@ -1,8 +1,7 @@
 function [corr_] =correlations(variables, target)
 %Plot scatters of the variables wtr to the given target and return the
-%correlation coefficients.
-
-
+%correlation coefficients. Return the correlations between target and
+%variables
 
 % Top two plots
 tiledlayout(4,5) % at most 5*4=20 variables to represent

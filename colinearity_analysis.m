@@ -1,5 +1,11 @@
 function [s] = colinearity_analysis(X)
-%COLLINEARITY_ANALYSIS from Assignment 5
+%Perform VIF analysis on the given matrix X.
+%Outputs:
+%VIF                  : VIF factors of the columns of X
+%condition_number     : condition_number of X
+%correlation_matrix   : correlation_matrix of the columns of X
+
+
 
 % condition number
 tX = X'*X;
@@ -21,6 +27,7 @@ for i = 2:k                              % do not consider intercept
     VIF(i) = 1/(1-R2);                   % VIF
 end
 
+% save results
 s = struct();
 s.condition_number = condition_nb;
 s.correlation_matrix = corr;

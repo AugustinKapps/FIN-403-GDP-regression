@@ -1,5 +1,12 @@
 function [BP_stat,BP_crit,H] = Breusch_Pagan_test(Z,res,alpha)
-%BREUSCH_PAGAN_TEST
+%Perform breusch pagan test on the the given data W, resudials res at a
+%confidence level alpha.
+%Outputs:
+%   BP_stat   : breusch pagan statistic
+%   BP_crit   : critical value for the given confidence level
+%   H         : resulting hypothesis, 1 if the null hypothesis
+%   (homooscedasticity) is rejected
+
 
 %Z = [ones(n,1) Z]  %add bias to Z
 n = size(Z,1);

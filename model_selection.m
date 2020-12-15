@@ -1,4 +1,15 @@
 function [X_select, idx_select] = model_selection(method,X,y)
+%Build a model by selecting features among the given X according to the
+%given method to use
+%Inputs:
+%   method : "simple_to_general" for simple to general aproach,
+%            "general_to_simple" for general to simple aproach,
+%            "p_val" to select only significant features
+%Outputs:
+%   X_select    : the set of selected features
+%   idx_select  : indices of the selected features
+
+
 lambda = 1000000;
 % Define size parameters
 k = size(X,2);

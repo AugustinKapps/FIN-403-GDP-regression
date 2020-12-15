@@ -1,5 +1,13 @@
 function [res,new_col_names] = expand(X,degree,add_interractions,add_logs,col_names)
-% We assume that the first columns is always the intercept
+% Commpute the expansion of a given set of features. The expansion consits
+% of a polynomial expansion of degree 'degree', interractions of degree 1
+% (if add_interractions is true), a log transformation of the positive
+% features (if add_logs is true).
+%
+%Outputs:
+%res  : resulting expansion
+%new_col_names : names of the new set of columns
+
 new_col_names=col_names;
 res=X;
 % we don't want to expand the intercept
@@ -16,7 +24,7 @@ for deg=1:degree-1
    
 end
 
-
+% add interractions of degree 1 if required
 if add_interractions
    interractions=[];
    for c_1=1:size(X,2)
@@ -35,6 +43,7 @@ if add_interractions
    res=[res,interractions];
 end
 
+% add log transformations if required
 if add_logs
     % add log tranformations for positive columns
     res=[res,log(X(:,all(X>0)))];

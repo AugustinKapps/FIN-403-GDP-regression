@@ -1,12 +1,20 @@
 function [statistics] = FGLS(X,y,method)
-%FGLS Summary of this function goes here
-%   Detailed explanation goes here
+% Compute FGLS on the given data using the given method .
+% Methods(slide 6 of GLM lecture) : -'hetero': heteroscedasticity model
+%                                 : -'time-series' : time series model 
+%Outputs:
+%statistics : statistics of the computed FGLS
 beta = 0;
+% if no method specified us classic FGLS
 if nargin <= 2
+    % number of iteration for the estimation process
     n_iteration = 20;
+    % initial ols
     stats_ols = ols(X,y);
+    % initial residuals
     residuals = stats_ols.residuals;
-    omega=diag(residuals.*residuals);
+    % inital omega matrix
+    omega=diag(residuals.^2);
 
     for i = 1:n_iteration
         % fit model

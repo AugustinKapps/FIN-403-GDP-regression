@@ -1,9 +1,11 @@
 function [F_stat, F_crit, H] = FTest(X,y,R,q,alpha)
+% Perform F test on the given data X,y usgin the given constraints R,q at
+% confidence level alpha
 
-% To reject an hypothesis.
-
+%OLS parameters
 param = (X'*X)\(X'*y);
 
+%different sizes
 n = size(X,1);
 K = size(X,2);
 J = size(R,1);
