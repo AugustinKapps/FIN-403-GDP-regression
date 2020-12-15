@@ -50,7 +50,7 @@ t_value = beta./SE;
 P=NaN;
 % check is t_value is real, otherwise return Nan as p values
 if isreal(t_value)
-    P=2*(1-tcdf(t_value,n-K));
+    P=2*(1-tcdf(abs(t_value),n-K));
 end
 [result]         = t_test(X,y,beta);
 significant_test = result.significant_test(end);
