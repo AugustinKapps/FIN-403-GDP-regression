@@ -8,6 +8,8 @@ function [model] = ols(X,y,method,lambda)
 %   P    : p values attesting of the significane og each component of beta
 %   tX   : log transformation of X (if required)
 %   ty   : log transformation of y (if required)
+%Also return all the other statistics computed by the compute_statistics
+%function.
 k = size(X,2);
 if nargin <=2
     beta  = (X'*X)\(X'*y);

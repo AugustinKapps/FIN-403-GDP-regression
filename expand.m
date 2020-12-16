@@ -5,8 +5,8 @@ function [res,new_col_names] = expand(X,degree,add_interractions,add_logs,col_na
 % features (if add_logs is true).
 %
 %Outputs:
-%res  : resulting expansion
-%new_col_names : names of the new set of columns
+%   res  : resulting expansion
+%   new_col_names : names of the new set of columns
 
 new_col_names=col_names;
 res=X;

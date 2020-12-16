@@ -105,7 +105,7 @@ function [without_i] = remove_i(remaining,i)
 end
 % selection criterion
 function [crit_val] = criterion(X)
-    stat = ols_regularised(X,y,lambda);
+    stat = ols(X,y);
     crit_val = stat.R2;
 end
 end

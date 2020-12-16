@@ -1,5 +1,10 @@
 function [res] = log_transform(x)
-        
+% Tranform a given matrix by rescling it and applying a log function.
+% If the matrix is 2D (not a vector) we assume that first column is the
+% intercept.
+%Outputs:
+%   res : resutl of the transformation
+
 % check if the given value is y of X (y has no intercept to take into account)
 if size(x,2)>1
    % remove intercept

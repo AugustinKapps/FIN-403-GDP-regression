@@ -2,19 +2,17 @@ function [V,H] = VuongStatistic(X,y,regressors_model_1,regressors_model_2)
 
 n = length(y);
 
+
 X_1 = X(:,regressors_model_1);
 X_2 = X(:,regressors_model_2);
 
-param_1 = X_1'*X_1\X_1'*y;
-param_2 = X_2'*X_2\X_2'*y;
+model_1=ols(X_1,y);
+model_2=ols(X_2,y);
 
-e_1 = y - X_1 * param_1;
-e_2 = y - X_2 * param_2;
+log_1=  (log(model_1.SSE/n) + model_1.residuals .*  model_1.residuals /(model_1.SSE/n));
+log_2=  (log(model_2.SSE/n) + model_2.residuals .*  model_2.residuals /(model_2.SSE/n));
 
-e_sq_1 = e_1'*e_1;
-e_sq_2 = e_2'*e_2;
-
-log_diff = -0.5 * (log(e_sq_1/n) + e_1 .* e_1 /(e_sq_1/n)) + 0.5*(log(e_sq_2/n) + e_2 .* e_2 /(e_sq_2/n));
+log_diff = -0.5 * log_1 + 0.5*log_2;
 if log_diff==0
 V=0;
 else 
