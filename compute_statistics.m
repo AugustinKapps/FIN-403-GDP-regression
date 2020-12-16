@@ -52,7 +52,7 @@ P=NaN;
 if isreal(t_value)
     P=2*(1-tcdf(abs(t_value),n-K));
 end
-[result]         = t_test(X,y,beta);
+[result]         = t_test(X,beta,SE);
 significant_test = result.significant_test(end);
 
 % Save all the computed results
@@ -70,6 +70,7 @@ stats.p_values   = P;
 stats.significant_test = significant_test;
 stats.residuals  = res;
 stats.pred       = y_hat;
+stats.SSE        = SSE;
 end
 
 

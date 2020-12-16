@@ -3,7 +3,7 @@ function [statistics] = FGLS(X,y,method)
 % Methods(slide 6 of GLM lecture) : -'hetero': heteroscedasticity model
 %                                 : -'time-series' : time series model 
 %Outputs:
-%statistics : statistics of the computed FGLS
+%statistics : statistics of the computed FGLS (refer to the compute_statistics function)
 beta = 0;
 % if no method specified us classic FGLS
 if nargin <= 2

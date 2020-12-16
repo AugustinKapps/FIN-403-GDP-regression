@@ -1,7 +1,12 @@
 function [data] = select_and_normalize(country,model_selection)
 % Load data corresponindg to the given country and select the needed
 % columns(from VIF analysis) and also from the model selection analysis (if required)
-
+%Outputs:
+%   tr : train set
+%   te : test set
+%   y_tr : train target
+%   y_te : test target
+%   col_names : names of the selected columns
 % path of the data
 path=strcat('data/',country,'.csv'); 
 % load and preprocess the data
@@ -21,6 +26,9 @@ switch country
         selection = [true;false;true;false;false;true;false;true;false;true;false;false;false;false;false;false;false;true];
 end
 
+col_names = ["INTERCEPT","YEAR","CC","CC2","KC","CSAVE","XRAT","CG","KG","CI","KI","OPENK","OPENC","POP","PC","PG","P","PI"];
+
+col_names = col_names(selection);
 % apply selection and standardize
 [tr,te]  = standardize(tr(:,selection),te(:,selection));
 
@@ -30,13 +38,16 @@ if nargin >1 && model_selection
     switch country
         case 'korea'
              te = te(:,[1,2,3,4,5,6,7,8]);
-             tr = tr(:,[1,2,3,4,5,6,7,8]);   
+             tr = tr(:,[1,2,3,4,5,6,7,8]);
+             col_names = col_names([1,2,3,4,5,6,7,8])
         case 'china'
              te = te(:,[1,2,4,5,8]);
              tr = tr(:,[1,2,4,5,8]);
+             col_names = col_names([1,2,4,5,8])
         case 'taiwan'
              te = te(:,[1,2,3,4,5]);
              tr = tr(:,[1,2,3,4,5]);
+             col_names = col_names([1,2,3,4,5])
     end
 end
 
@@ -47,7 +58,7 @@ data.te = te;
 data.y_tr = y_tr;
 data.y_te = y_te;
 data.country_name = country;
-
+data.col_names = col_names;
 
 
 
