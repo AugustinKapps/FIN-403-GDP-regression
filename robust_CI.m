@@ -14,7 +14,7 @@ upper_quantile=tinv(1-alpha/2,n-K);
 % variance of beta assuming heteroscedasticity
 omega    = diag(model.residuals);
 var_beta = inv(X'*X)* X'*omega*X* inv(X'*X);
-
-CI=diag(var_beta)*[lower_quantile,upper_quantile]+model.beta;
+SE       = sqrt(diag(var_beta));
+CI=SE*[lower_quantile,upper_quantile]+model.beta;
 end
 
