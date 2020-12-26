@@ -39,15 +39,15 @@ if nargin >1 && model_selection
         case 'korea'
              te = te(:,[1,2,3,4,5,6,7,8]);
              tr = tr(:,[1,2,3,4,5,6,7,8]);
-             col_names = col_names([1,2,3,4,5,6,7,8])
+             col_names = col_names([1,2,3,4,5,6,7,8]);
         case 'china'
              te = te(:,[1,2,4,5,8]);
              tr = tr(:,[1,2,4,5,8]);
-             col_names = col_names([1,2,4,5,8])
+             col_names = col_names([1,2,4,5,8]);
         case 'taiwan'
              te = te(:,[1,2,3,4,5]);
              tr = tr(:,[1,2,3,4,5]);
-             col_names = col_names([1,2,3,4,5])
+             col_names = col_names([1,2,3,4,5]);
     end
 end
 
