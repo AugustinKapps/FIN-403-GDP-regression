@@ -35,14 +35,14 @@ if nargin <= 2
     % output
     statistics = compute_statistics(X,y,beta);
     C = sqrt(invW); % C from lectures slides
-    mapping = @(X,y) map(X,y,C);
+    mapping = @(X,y) ([C*X,C*y]);
 elseif method == 'hetero' 
     % use the following model for residuals: log(e^T*e) = 1 +
     % log(X+min(X)+1) alpha 
+    disp("A transformation was applied to X, use tX in the output")
     model = ols(X,y);
-    tX    = X(:,2:end);
-    minX  =  min(tX);
-    tX    = tX - minX + 1;
+    tX = X(:,2:end);
+    tX = tX - min(tX) + 1;
     one_v = ones(size(X,1),1);
     Z  = [one_v, log(tX)];
     tX = [one_v, tX];
@@ -55,7 +55,7 @@ elseif method == 'hetero'
     % output
     statistics = compute_statistics(tX,y,beta);
     C = sqrt(inv(W)); % C from lectures slides
-    mapping = @(X,y) map(logtransform(X,minX),y,C);
+    mapping = @(X,y) [C*logtransform(X,min(tX)),C*y];
 else
     disp("Error bad argument")
 end
@@ -65,10 +65,7 @@ end
 function [tX]  = logtransform(X,minX)
     tX = X(:,2:end);
     tX = tX - minX + 1;
-    tX = [ones(size(X,1),1), tX];
+    tX = [one_v, tX];
 end
 
-function [tX,ty] = map(X,y,C) 
-    tX = C*X;
-    ty = C*y;
-end
+function [tX,ty] = map(X,)
