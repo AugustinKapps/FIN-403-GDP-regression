@@ -18,8 +18,8 @@ param     = model_ols.beta;
 asym_var  = model_ols.sample_var;
 
 % compute F statistic
-excess = (R * param - q);
-F_stat = excess' * inv(R * asym_var * R') * excess / J;
+error = (R * param - q);
+F_stat = error' * inv(R * asym_var * R') * error / J;
 % compute critical value at confidence level alpha
 F_crit = finv(1-alpha,J,n-k);
 
