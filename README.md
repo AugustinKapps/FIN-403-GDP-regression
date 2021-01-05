@@ -8,20 +8,20 @@ Our project has the following file structure:
 
     .
     ├── data                                      # Data folder
-    ? ??? china.csv                               # example file 
-    ? ??? ...                                     # ...
+    │ ├── china.csv                               # example file 
+    │ ├── ...                                     # ...
     ├── figures                                   # Figure folder (part of the report)
-    ? ??? china_residuals.jpg                     # example file 
-    ? ??? ...                                     # ...
-    ??? summary_stats                             # contains summary stats
-    ? ??? summary_stats_china.csv                 # example file 
-    ? ??? ...                                     # ...
-    ??? <name>.m                                  # matlab functions used
-    ??? ...                                       # ...
-    ??? notebook_1_explanatory_analysis.mlx       # 1st matlab live script (usage of <>.m ft)
-    ??? ...                                       # ...
-    ??? notebook_<x>_<description>.mlx            # xth matlab live script
-    ??? README.md               
+    │ ├── china_residuals.jpg                     # example file 
+    │ ├── ...                                     # ...
+    ├── summary_stats                             # contains summary stats
+    │ ├── summary_stats_china.csv                 # example file 
+    │ ├── ...                                     # ...
+    ├── <name>.m                                  # matlab functions used
+    ├── ...                                       # ...
+    ├── notebook_1_explanatory_analysis.mlx       # 1st matlab live script (usage of <>.m ft)
+    ├── ...                                       # ...
+    ├── notebook_<x>_<description>.mlx            # xth matlab live script
+    ├── README.md                            
 
 ## How to run our code and reproduce the results
 
