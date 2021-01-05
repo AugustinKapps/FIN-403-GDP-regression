@@ -1,8 +1,8 @@
-### FIN-403 project: GDP  regression
+# FIN-403 project: GDP  regression
 
 In this `README`, we will briefly present how our code is structured and how it can be run.
 
-# Organisation of the submission
+## Organisation of the submission
  
 Our project has the following file structure:
 
@@ -23,7 +23,7 @@ Our project has the following file structure:
     ??? notebook_<x>_<description>.mlx            # xth matlab live script
     ??? README.md               
 
-# How to run our code and reproduce the results
+## How to run our code and reproduce the results
 
 All the findings reported in the `latex` file come from the live script files:
 
@@ -41,7 +41,7 @@ However, note that they can be run independently.
 country for which the analysis is required needs to be selected. You can select one of the following strings: ```'china', 'korea', 'taiwan``` 
 and run the notebook to get the results.
 
-Regarding the ````.m``` files, we created several types:
+Regarding the ```.m``` files, we created several types:
 
 * Statistical tests:
     * FTest.m
@@ -73,16 +73,18 @@ Regarding the ````.m``` files, we created several types:
 In most of the cases, we tried to modularise code. Furthemore, the return object (of ```.m``` files) is usually a struct with named field to make the code easier to read and follow.
 Note that all functions are well documented. For the `tests`, we usually tried to follow the same structure as done in the programming exercises of the course:
 > Return `test_stats`, `critical_value` and `H` (result of `test_stats > critical_value`)
+
 Finally, we followed a similar approach as done in the matlab library functions in terms of `ols` output:
+
 > Return a struct with all quantities of interest already computed: `AIC`, `R2`, `SE`, `CI`, etc.
 
-# Important information
+## Important information
 
 Note that we used the Matlab version: `R-2019-a update 9`.
 The VIF analysis has a huge impact on our study and it is highly influenced by the method used to compute eigenvalues of a matrix (small eigenvalues slightly change due to floating-point errors). This method can change according to the version of matlab. 
 We hard-coded some of the results that depend on the VIF analysis in order to make the rest of the study coherent even when using a different version of Matlab.
 
-# Usefull Links 
+## Usefull Links 
 
 
 |Name        |Links                                                         |
