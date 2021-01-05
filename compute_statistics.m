@@ -30,7 +30,7 @@ BIC = log(SSE / n) + log(n) * K / n;
 
 % estimated variance 
 s2  = SSE/(n-K);
-var=s2*inv(X'*X);
+var = s2*inv(X'*X);
 
 % standart error estimator
 SE=sqrt(diag(var));
