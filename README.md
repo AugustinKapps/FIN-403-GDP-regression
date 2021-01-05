@@ -7,10 +7,10 @@ In this `README`, we will briefly present how our code is structured and how it 
 Our project has the following file structure:
 
     .
-    ??? data                                      # Data folder
+    ├── data                                      # Data folder
     ? ??? china.csv                               # example file 
     ? ??? ...                                     # ...
-    ??? figures                                   # Figure folder (part of the report)
+    ├── figures                                   # Figure folder (part of the report)
     ? ??? china_residuals.jpg                     # example file 
     ? ??? ...                                     # ...
     ??? summary_stats                             # contains summary stats
