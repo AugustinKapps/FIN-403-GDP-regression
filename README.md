@@ -6,22 +6,22 @@ In this `README`, we will briefly present how our code is structured and how it 
  
 Our project has the following file structure:
  
-  .
-  â??â??â?? data                   # Data folder
-  â?? â??â??â?? china.csv                # example file 
-  â?? â??â??â?? ...                   # ...
-  â??â??â?? figures                  # Figure folder (part of the report)
-  â?? â??â??â?? china_residuals.jpg           # example file 
-  â?? â??â??â?? ...                   # ...
-  â??â??â?? summary_stats               # contains summary stats
-  â?? â??â??â?? summary_stats_china.csv         # example file 
-  â?? â??â??â?? ...                   # ...
-  â??â??â?? <name>.m                 # matlab functions used
-  â??â??â?? ...                    # ...
-  â??â??â?? notebook_1_explanatory_analysis.mlx    # 1st matlab live script (usage of <>.m ft)
-  â??â??â?? ...                    # ...
-  â??â??â?? notebook_<x>_<description>.mlx      # xth matlab live script
-  â??â??â?? README.md               
+.
+â”œâ”€â”€ data                                      # Data folder
+â”‚ â”œâ”€â”€ china.csv                               # example file 
+â”‚ â”œâ”€â”€ ...                                     # ...
+â”œâ”€â”€ figures                                   # Figure folder (part of the report)
+â”‚ â”œâ”€â”€ china_residuals.jpg                     # example file 
+â”‚ â”œâ”€â”€ ...                                     # ...
+â”œâ”€â”€ summary_stats                             # contains summary stats
+â”‚ â”œâ”€â”€ summary_stats_china.csv                 # example file 
+â”‚ â”œâ”€â”€ ...                                     # ...
+â”œâ”€â”€ <name>.m                                  # matlab functions used
+â”œâ”€â”€ ...                                       # ...
+â”œâ”€â”€ notebook_1_explanatory_analysis.mlx       # 1st matlab live script (usage of <>.m ft)
+â”œâ”€â”€ ...                                       # ...
+â”œâ”€â”€ notebook_<x>_<description>.mlx            # xth matlab live script
+â”œâ”€â”€ README.md                   
  
 ## How to run our code and reproduce the results
  
@@ -85,8 +85,7 @@ We hard-coded some of the results that depend on the VIF analysis in order to ma
  
 ## Useful Links 
  
-If you need to have access to some version of the code or the report, here are some links. Note that the repository is private ant that you will have to first send us an 
-email so that we can add you to the repostiory.
+If you need to have access to some version of the code or the report, here are some links. Note that the repository is private ant that you will have to first send us an email so that we can add you to the repostiory.
  
 |Name    |Links                             |
 |:-----------|:-------------------------------------------------------------|
