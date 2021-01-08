@@ -6,7 +6,7 @@ In this `README`, we will briefly present how our code is structured and how it 
  
 Our project has the following file structure:
 
- .
+.
 ├── data                                      # Data folder
 │ ├── china.csv                               # example file 
 │ ├── ...                                     # ...
@@ -21,8 +21,9 @@ Our project has the following file structure:
 ├── notebook_1_explanatory_analysis.mlx       # 1st matlab live script (usage of <>.m ft)
 ├── ...                                       # ...
 ├── notebook_<x>_<description>.mlx            # xth matlab live script
-├── README.md                   
- 
+├── README.md
+
+
 ## How to run our code and reproduce the results
  
 All the findings reported in the `latex` file come from the live script files:
