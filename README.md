@@ -5,8 +5,8 @@ In this `README`, we will briefly present how our code is structured and how it 
 ## Organisation of the submission
  
 Our project has the following file structure:
- 
-.
+
+ .
 ├── data                                      # Data folder
 │ ├── china.csv                               # example file 
 │ ├── ...                                     # ...
