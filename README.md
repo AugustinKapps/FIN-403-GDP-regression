@@ -36,7 +36,7 @@ All the findings reported in the `latex` file come from the live script files:
 5. `notebook_5_ridge_reg.mlx`      : extension: Ridge regression to reduce overfitting
 6. `notebook_6 final_models.mlx`     : final models (interpretation section in the report)
  
-The notebook number indicates the chronological order in which they have been created. This order follows the outile of our report.
+The notebook number indicates the chronological order in which  they have been created. This order follows the outile of our report.
 However, note that they can be run independently.
  
 > *Remark*: the code is completely independent of the chosen country. At the beginning of each notebook, the data is loaded and the country for which the analysis is required needs to be selected. You can select one of the following strings: ```'china', 'korea', 'taiwan``` 
